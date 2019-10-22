@@ -13,6 +13,7 @@ import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
+import android.util.Log
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -55,8 +56,9 @@ class StripeMainActivity : AppCompatActivity() {
 
         amountToPaytV = findViewById(R.id.amount_topay)
 
-        val amount = 100000f
-        val shippingCost = 100f;
+        var bundle = intent.getBundleExtra(Constants.bundle)
+        val amount = bundle.getFloat(Constants.amount)
+        Log.d("StripeMainAct",""+amount)
 
         amountToPaytV!!.text = "$" + String.format("%.2f", amount)
 
@@ -64,7 +66,7 @@ class StripeMainActivity : AppCompatActivity() {
         paymentButton!!.setOnClickListener { view ->
             val cardToSave = mCardInputWidget!!.card
             if (cardToSave != null && amount != 0f) {
-                doTran(cardToSave, amount,shippingCost)
+                doTran(cardToSave, amount)
                 paymentButton!!.text = "payement initiated"
                 paymentButton!!.isEnabled = false
             }
@@ -73,7 +75,7 @@ class StripeMainActivity : AppCompatActivity() {
 
     }
 
-    fun doTran(card: Card, amount: Float,shippingCost:Float) {
+    fun doTran(card: Card, amount: Float) {
         stripe!!.createToken(
                 card,
                 object : TokenCallback {
@@ -92,7 +94,6 @@ class StripeMainActivity : AppCompatActivity() {
                         val paymentRequest = PaymentRequest()
                         paymentRequest.stripeToken = token
                         paymentRequest.amount = amount
-                        paymentRequest.shippingCost = shippingCost
                         paymentRequest.debug = true
                         paymentRequest.isLiveModeStripeUserId = false
                         paymentRequest.loggedInUserId = loggedInUserId

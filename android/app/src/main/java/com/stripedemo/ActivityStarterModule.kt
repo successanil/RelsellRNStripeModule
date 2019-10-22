@@ -6,6 +6,7 @@ package com.stripedemo
 
 import android.app.Activity
 import android.content.Intent
+import android.os.Bundle
 import android.util.Log
 import com.facebook.react.bridge.*
 
@@ -56,7 +57,7 @@ internal class ActivityStarterModule(reactContext: ReactApplicationContext) : Re
     }
 
     @ReactMethod
-    fun navigateToStripeMain(promise: Promise) {
+    fun navigateToStripeMain(amount:Float,promise: Promise) {
         val currentActivity = currentActivity
         val intent = Intent(currentActivity, StripeMainActivity::class.java)
         if (currentActivity == null) {
@@ -64,6 +65,10 @@ internal class ActivityStarterModule(reactContext: ReactApplicationContext) : Re
             return
         }
         mPickerPromise = promise
+        var bundle = Bundle()
+        bundle.putFloat(Constants.amount,amount)
+        Log.d("Stripe",""+amount)
+        intent.putExtra(Constants.bundle,bundle)
         currentActivity.startActivityForResult(intent, Constants.STRIPE_MAIN_ACTIVITY_INVOKE_CODE)
     }
 

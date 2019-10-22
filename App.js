@@ -25,7 +25,7 @@ class App extends Component {
             title="Start stripe sample activity"
           />
         </View>
-        <View style={{marginTop:16}}>
+        <View style={{marginTop: 16}}>
           <Button
             style={{width: 300}}
             onPress={() => launchStripeActivityTwo()}
@@ -52,7 +52,10 @@ const launchStripeActivityOne = () => {
 
 const launchStripeActivityTwo = () => {
   if (Platform.OS === 'android') {
-    var videoLoaded = NativeModules.ActivityStarter.navigateToStripeMain();
+    var amount = 10.0;
+    var videoLoaded = NativeModules.ActivityStarter.navigateToStripeMain(
+      amount,
+    );
     videoLoaded
       .then(result => {
         console.log('Promise Returned Success');
