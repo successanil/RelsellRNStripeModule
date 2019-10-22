@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">StripeDemo</string>
+    <string name="you_are_going_to_pay">You are going to pay</string>
+    <string name="make_payment">Make payment</string>
+    <string name="please_enter_cc_details">Please enter cc details</string>
 </resources>

@@ -7,30 +7,60 @@
  */
 
 import React, {Component} from 'react';
-import {View, NativeModules, Button} from 'react-native';
+import {Platform, View, NativeModules, Button} from 'react-native';
 
 class App extends Component {
   render() {
     return (
-      <View>
-        <Button
-          onPress={() => navigateToExample()}
-          title="Start example activity"
-        />
+      <View
+        style={{
+          height: '100%',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <View>
+          <Button
+            style={{width: 300}}
+            onPress={() => launchStripeActivityOne()}
+            title="Start stripe sample activity"
+          />
+        </View>
+        <View style={{marginTop:16}}>
+          <Button
+            style={{width: 300}}
+            onPress={() => launchStripeActivityTwo()}
+            title="Start stripe Main activity"
+          />
+        </View>
       </View>
     );
   }
 }
 
-const navigateToExample = () => {
-  var videoLoaded = NativeModules.ActivityStarter.navigateToExample();
-  videoLoaded
-    .then(result => {
-      console.log('Promise Returned Success');
-    })
-    .catch(error => {
-      console.log('Promise Returned Failure');
-    });
+const launchStripeActivityOne = () => {
+  if (Platform.OS === 'android') {
+    var videoLoaded = NativeModules.ActivityStarter.navigateToExample();
+    videoLoaded
+      .then(result => {
+        console.log('Promise Returned Success');
+      })
+      .catch(error => {
+        console.log('Promise Returned Failure');
+      });
+  }
+};
+
+const launchStripeActivityTwo = () => {
+  if (Platform.OS === 'android') {
+    var videoLoaded = NativeModules.ActivityStarter.navigateToStripeMain();
+    videoLoaded
+      .then(result => {
+        console.log('Promise Returned Success');
+      })
+      .catch(error => {
+        console.log('Promise Returned Failure');
+      });
+  }
 };
 
 export default App;

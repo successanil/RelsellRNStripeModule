@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/my_tastings_frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center">
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout
+        android:padding ="@dimen/activity_horizontal_margin"
+        android:background="#FFF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView android:layout_width="match_parent" android:text="@string/please_enter_cc_details"
+                  android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                  android:layout_height="wrap_content"
+                  android:textSize="@dimen/txt_size_20sp"
+                  android:fontFamily="@font/firasans_regular"
+        />
+        <com.stripe.android.view.CardInputWidget
+            android:id="@+id/card_input_widget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        />
+        <LinearLayout android:layout_marginTop="20dp" android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical"
+                      android:gravity="bottom">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="@string/you_are_going_to_pay"
+                  android:fontFamily="@font/firasans_regular"
+                  android:textSize="@dimen/txt_size_20sp"/>
+            <TextView  android:layout_width="wrap_content"
+                       android:fontFamily="@font/firasans_regular"
+                       android:layout_height="wrap_content"
+                       android:id="@+id/amount_topay"
+                       android:textStyle="bold"
+                      android:text="$0" android:textSize="34sp"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <Button android:layout_marginTop="20dp" android:id="@+id/payment_button" android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFF"
+                android:paddingLeft="@dimen/size_20dp"
+                android:paddingRight="@dimen/size_20dp"
+                android:textAllCaps="false"
+                android:background="@color/colorPrimary"
+                android:fontFamily="@font/firasans_regular"
+                android:enabled="true"
+                android:text="@string/make_payment"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
+
