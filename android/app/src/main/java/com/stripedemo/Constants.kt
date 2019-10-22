@@ -6,6 +6,7 @@ package com.stripedemo
 
 class Constants {
     companion object{
+        val paymentRequest: String = "paymentRequest"
         val bundle: String = "bundle"
         val amount: String = "amount"
         val PAYMENT_FAILURE_CODE = 9000

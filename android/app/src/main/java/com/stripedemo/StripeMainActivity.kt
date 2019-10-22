@@ -13,7 +13,6 @@ import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
-import android.util.Log
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -57,16 +56,15 @@ class StripeMainActivity : AppCompatActivity() {
         amountToPaytV = findViewById(R.id.amount_topay)
 
         var bundle = intent.getBundleExtra(Constants.bundle)
-        val amount = bundle.getFloat(Constants.amount)
-        Log.d("StripeMainAct",""+amount)
+        var paymentRequest = bundle.getParcelable(Constants.paymentRequest) as PaymentRequest
 
-        amountToPaytV!!.text = "$" + String.format("%.2f", amount)
+        amountToPaytV!!.text = "$" + String.format("%.2f", paymentRequest.amount)
 
 
         paymentButton!!.setOnClickListener { view ->
             val cardToSave = mCardInputWidget!!.card
-            if (cardToSave != null && amount != 0f) {
-                doTran(cardToSave, amount)
+            if (cardToSave != null && paymentRequest.amount != 0f) {
+                doTran(cardToSave, paymentRequest)
                 paymentButton!!.text = "payement initiated"
                 paymentButton!!.isEnabled = false
             }
@@ -75,7 +73,7 @@ class StripeMainActivity : AppCompatActivity() {
 
     }
 
-    fun doTran(card: Card, amount: Float) {
+    fun doTran(card: Card, paymentRequest: PaymentRequest) {
         stripe!!.createToken(
                 card,
                 object : TokenCallback {
@@ -91,19 +89,9 @@ class StripeMainActivity : AppCompatActivity() {
                     override fun onSuccess(token: Token) {
 
                         val gson = Gson()
-                        val paymentRequest = PaymentRequest()
                         paymentRequest.stripeToken = token
-                        paymentRequest.amount = amount
-                        paymentRequest.debug = true
-                        paymentRequest.isLiveModeStripeUserId = false
-                        paymentRequest.loggedInUserId = loggedInUserId
-
-
                         val paymentJsonStr = gson.toJson(paymentRequest)
-//                        VinoCellaApp.printLog(TAG, paymentJsonStr)
-
-                        val url = "payment url"
-                        //String url = BuildConfig.add_balance_url;
+                        var url = paymentRequest.paymentUrl;
 
 
                         try {

@@ -53,8 +53,14 @@ const launchStripeActivityOne = () => {
 const launchStripeActivityTwo = () => {
   if (Platform.OS === 'android') {
     var amount = 10.0;
+    var paymentConfigFromRN = {
+      amount: 15.0,
+      debug: true,
+      isLiveModeStripeUserId: false,
+      paymentUrl: 'http://test url',
+    };
     var videoLoaded = NativeModules.ActivityStarter.navigateToStripeMain(
-      amount,
+      JSON.stringify(paymentConfigFromRN),
     );
     videoLoaded
       .then(result => {

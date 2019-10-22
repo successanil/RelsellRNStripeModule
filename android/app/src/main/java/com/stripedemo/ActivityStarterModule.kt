@@ -9,6 +9,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import com.facebook.react.bridge.*
+import com.google.gson.Gson
 
 
 internal class ActivityStarterModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
@@ -57,8 +58,10 @@ internal class ActivityStarterModule(reactContext: ReactApplicationContext) : Re
     }
 
     @ReactMethod
-    fun navigateToStripeMain(amount:Float,promise: Promise) {
+    fun navigateToStripeMain(paymentConfig:String,promise: Promise) {
         val currentActivity = currentActivity
+        var gson = Gson()
+        var paymentRequest = gson.fromJson(paymentConfig,PaymentRequest::class.java)
         val intent = Intent(currentActivity, StripeMainActivity::class.java)
         if (currentActivity == null) {
             promise.reject(E_ACTIVITY_DOES_NOT_EXIST, "Activity doesn't exist")
@@ -66,8 +69,7 @@ internal class ActivityStarterModule(reactContext: ReactApplicationContext) : Re
         }
         mPickerPromise = promise
         var bundle = Bundle()
-        bundle.putFloat(Constants.amount,amount)
-        Log.d("Stripe",""+amount)
+        bundle.putParcelable(Constants.paymentRequest,paymentRequest)
         intent.putExtra(Constants.bundle,bundle)
         currentActivity.startActivityForResult(intent, Constants.STRIPE_MAIN_ACTIVITY_INVOKE_CODE)
     }
