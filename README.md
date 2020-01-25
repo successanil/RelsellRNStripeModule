@@ -17,5 +17,7 @@ react-native run-android
 
 After  app is launched a you will see simple button to launch Stripe Payment CC Screen.
 
+Demo blog link will be updated soon.
+
 
 
