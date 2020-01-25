@@ -3,4 +3,6 @@
     <string name="you_are_going_to_pay">You are going to pay</string>
     <string name="make_payment">Make payment</string>
     <string name="please_enter_cc_details">Please enter cc details</string>
+    <string name="publishable_key">pk_test_4atUqtGe4u4uy7k8FU5JA8Pr</string>
+    <string name="publishable_key_token">sk_test_bTgqLNH0d3BS3cUQYXmoZYAq</string>
 </resources>

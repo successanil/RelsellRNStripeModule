@@ -27,7 +27,8 @@ import com.stripe.android.view.CardInputWidget
 
 class StripeMainActivity : AppCompatActivity() {
 
-    internal var PUBLISHABLE_KEY = "pk_test_Tjs4dEhIDszNd05hkeAW6H0f"
+    internal var PUBLISHABLE_KEY = R.string.publishable_key
+    internal var PUBLISHABLE_KEY_TOKEN = R.string.publishable_key_token;
     internal var stripe: Stripe? = null
     internal var mCardInputWidget: CardInputWidget? = null
     internal var paymentButton: Button? = null
@@ -47,7 +48,7 @@ class StripeMainActivity : AppCompatActivity() {
 
 
 
-        stripe = Stripe(this@StripeMainActivity, PUBLISHABLE_KEY)
+        stripe = Stripe(this@StripeMainActivity, PUBLISHABLE_KEY.toString())
 
         paymentButton = findViewById(R.id.payment_button)
 
@@ -65,7 +66,7 @@ class StripeMainActivity : AppCompatActivity() {
             val cardToSave = mCardInputWidget!!.card
             if (cardToSave != null && paymentRequest.amount != 0f) {
                 doTran(cardToSave, paymentRequest)
-                paymentButton!!.text = "payement initiated"
+                paymentButton!!.text = "payment initiated"
                 paymentButton!!.isEnabled = false
             }
         }

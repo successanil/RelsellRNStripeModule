@@ -52,7 +52,6 @@ const launchStripeActivityOne = () => {
 
 const launchStripeActivityTwo = () => {
   if (Platform.OS === 'android') {
-    var amount = 10.0;
     var paymentConfigFromRN = {
       amount: 15.0,
       debug: true,
