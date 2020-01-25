@@ -4,11 +4,13 @@ var processPayment = (req, res) => {
     if(req.body.testpayments === true){
        console.log('test payments'); 
     }
+    var amount = req.body.amount;
+    amount *= 100;
   return new Promise((resolve, reject) => {
       
     (async () => {
       const charge = await stripe.charges.create({
-        amount: 1000,
+        amount: amount,
         currency: 'INR',
         source: 'tok_visa',
         description: 'Example charge',

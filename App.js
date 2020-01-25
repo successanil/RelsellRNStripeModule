@@ -18,18 +18,11 @@ class App extends Component {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        <View>
-          <Button
-            style={{width: 300}}
-            onPress={() => launchStripeActivityOne()}
-            title="Start stripe sample activity"
-          />
-        </View>
         <View style={{marginTop: 16}}>
           <Button
             style={{width: 300}}
             onPress={() => launchStripeActivityTwo()}
-            title="Start stripe Main activity"
+            title="ANDROID STRIPE"
           />
         </View>
       </View>
@@ -56,7 +49,8 @@ const launchStripeActivityTwo = () => {
       amount: 15.0,
       debug: true,
       isLiveModeStripeUserId: false,
-      paymentUrl: 'http://test url',
+      paymentUrl: 'http://www.relsellglobal.co.in/payment',
+      testpayments:true
     };
     var videoLoaded = NativeModules.ActivityStarter.navigateToStripeMain(
       JSON.stringify(paymentConfigFromRN),

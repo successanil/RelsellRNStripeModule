@@ -19,6 +19,7 @@ public class PaymentRequest implements Parcelable {
     public boolean debug;
     public boolean isLiveModeStripeUserId;
     public String paymentUrl;
+    public boolean testpayments;
 
     protected PaymentRequest(Parcel in) {
         amount = in.readFloat();

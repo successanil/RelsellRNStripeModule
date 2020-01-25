@@ -27,8 +27,7 @@ import com.stripe.android.view.CardInputWidget
 
 class StripeMainActivity : AppCompatActivity() {
 
-    internal var PUBLISHABLE_KEY = R.string.publishable_key
-    internal var PUBLISHABLE_KEY_TOKEN = R.string.publishable_key_token;
+    internal var PUBLISHABLE_KEY = "pk_test_b9t1oL9MfKlVGSqOkV3VLjHa00SUeq4B4t"
     internal var stripe: Stripe? = null
     internal var mCardInputWidget: CardInputWidget? = null
     internal var paymentButton: Button? = null
@@ -80,7 +79,9 @@ class StripeMainActivity : AppCompatActivity() {
                 object : TokenCallback {
                     override fun onError(error: Exception) {
 
-                        Toast.makeText(this@StripeMainActivity, "Payment was not successful. Please try again. ", Toast.LENGTH_LONG)
+                        Toast.makeText(this@StripeMainActivity, "Stripe Token generation was not successful. Please try again. " +
+                                ""+error,
+                                Toast.LENGTH_LONG)
                                 .show()
                         paymentButton!!.text = "Make Payment"
                         paymentButton!!.isEnabled = true
