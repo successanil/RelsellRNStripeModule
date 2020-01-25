@@ -49,7 +49,7 @@ const launchStripeActivityTwo = () => {
       amount: 15.0,
       debug: true,
       isLiveModeStripeUserId: false,
-      paymentUrl: 'http://www.relsellglobal.co.in/payment',
+      paymentUrl: 'http://www.relsellglobal.co.in/payment',  // change this to your payment url 
       testpayments:true
     };
     var videoLoaded = NativeModules.ActivityStarter.navigateToStripeMain(

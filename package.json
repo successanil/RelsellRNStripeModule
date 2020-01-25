@@ -1,7 +1,6 @@
 {
-  "name": "StripeDemo",
-  "version": "0.0.1",
-  "private": true,
+  "name": "rnstripedemo",
+  "version": "0.0.2",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -9,6 +8,22 @@
     "test": "jest",
     "lint": "eslint ."
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/successanil/RelsellRNStripeModule"
+  },
+  "keywords": [
+    "react-native",
+    "react native stripe",
+    "rn ios stripe",
+    "rn android stripe"
+  ],
+  "author": "Anil Kukreti",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/successanil/RelsellRNStripeModule/issues"
+  },
+  "homepage": "https://github.com/successanil/RelsellRNStripeModule/#readme",
   "dependencies": {
     "react": "16.9.0",
     "react-native": "0.61.2"
