@@ -8,4 +8,7 @@ Read me is to be updated.
 Demo blog link will be updated soon.
 
 
+Dear fellow devs , theres some problem with , please dont use it as of now. Trying hard to fixing. Soon will resume. 
+
+Thanks.
 
